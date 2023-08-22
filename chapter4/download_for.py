@@ -22,12 +22,14 @@ def download_all():
 def download_file(id):
     # 画像のURLと保存先を動的に決定
     url = base_url.format(id % 31, id)
-    save_file = save_dir + "/" + str(id) + ".png"
+    # save_file = save_dir + "/" + str(id) + ".png"
+    save_file = f"{save_dir}/{str(id)}.png"
     # URLのリソースを取得
     res = requests.get(url)
     # 戻り値をチェック
     if not res.ok:
-        print("失敗:", res.status_code)
+        # print("失敗:", res.status_code)
+        print(f"失敗:{res.status_code}")
         return
     # ファイルに保存
     with open(save_file, "wb") as fp:
